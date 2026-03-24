@@ -141,11 +141,6 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
   color: #444;
   line-height: 2.0;
   padding: 12px 0 12px 0;
-  border-bottom: 1px solid #eee;
-}
-
-.privacy-list-num li:first-child {
-  border-top: 1px solid #eee;
 }
 
 .privacy-block {
@@ -181,9 +176,6 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
 }
 
 .privacy-note {
-  background: #f7f7f7;
-  border-left: 3px solid #ccc;
-  padding: 20px 24px;
   margin: 0 0 40px;
 }
 
@@ -198,7 +190,7 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
   font-size: 0.9rem;
   color: #444;
   line-height: 2.0;
-  text-align: right;
+  text-align: left;
   margin: 40px 0 0;
 }
 
