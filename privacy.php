@@ -119,7 +119,7 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
 }
 
 .privacy-heading img {
-  max-width: 100%;
+  max-width: 300px;
   height: auto;
 }
 
