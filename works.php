@@ -109,7 +109,8 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
 }
 
 .works-page-heading {
-  margin: 0 0 40px;
+  max-width: 1200px;
+  margin: 0 auto 40px;
 }
 
 .works-page-heading img {
