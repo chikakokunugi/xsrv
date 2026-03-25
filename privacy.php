@@ -377,10 +377,10 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
 
 <!-- HEADER -->
 <header>
-  <a class="header-logo" href="./"><img src="logo.png" alt="プラスワンのロゴ画像"></a>
+  <a class="header-logo" href="test.php"><img src="logo.png" alt="プラスワンのロゴ画像"></a>
   <nav>
-    <a href="./#works">WORKS</a>
-    <a href="./#workflow">WORKFLOW</a>
+    <a href="test.php#works">WORKS</a>
+    <a href="test.php#workflow">WORKFLOW</a>
     <a href="mailto:info@dopo.jp" class="nav-contact">CONTACT</a>
     <div class="nav-icons">
       <a href="https://www.instagram.com/designoffice_plusone/" aria-label="Instagram" target="_blank">
@@ -471,8 +471,8 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
   </div>
   <div class="footer-nav-wrap">
     <nav class="footer-nav">
-      <a href="./#works">WORKS</a>
-      <a href="./#workflow">WORKFLOW</a>
+      <a href="test.php#works">WORKS</a>
+      <a href="test.php#workflow">WORKFLOW</a>
       <a href="privacy.php">PRIVACY</a>
       <a href="mailto:info@dopo.jp" class="footer-contact">CONTACT</a>
       <a href="https://www.instagram.com/designoffice_plusone/" aria-label="Instagram" class="footer-instagram" target="_blank">
