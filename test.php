@@ -940,7 +940,7 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
       </div>
     </div>
   </div>
-  <div class="works-more"><a href="#">More</a></div>
+  <div class="works-more"><a href="works.php">More</a></div>
 </section>
 
 <!-- WORKFLOW SECTION -->
