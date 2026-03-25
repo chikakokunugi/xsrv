@@ -113,7 +113,7 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
 }
 
 .works-page-heading img {
-  max-width: 300px;
+  max-width: 200px;
   height: auto;
 }
 
@@ -165,30 +165,75 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
   margin: 0;
 }
 
-.works-contact {
-  text-align: right;
-  padding: 40px 0 0;
-  max-width: 1200px;
-  margin: 0 auto;
+.works-card {
+  cursor: pointer;
 }
 
-.works-contact a {
+/* ===== MODAL ===== */
+#works-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+
+#works-modal.open {
+  display: flex;
+}
+
+#works-modal-inner {
+  background: #fff;
+  padding: 40px 32px 32px;
+  max-width: 860px;
+  width: 90%;
+  position: relative;
+}
+
+#works-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+  color: #333;
+  line-height: 1;
+}
+
+#works-modal-title {
   font-size: 0.85rem;
-  color: #111;
-  text-decoration: none;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  background: #111;
-  color: #fff;
-  padding: 10px 24px;
-  border-radius: 4px;
-  display: inline-block;
-  transition: opacity 0.2s;
+  color: #999;
+  margin: 0 0 20px;
 }
 
-.works-contact a:hover {
-  opacity: 0.7;
+#works-modal-images {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
 }
+
+#works-modal-images img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 480px) {
+  #works-modal-inner {
+    padding: 40px 16px 24px;
+  }
+  #works-modal-images {
+    gap: 8px;
+  }
+}
+
 
 /* ===== FOOTER ===== */
 .site-footer {
@@ -401,71 +446,68 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
   <h1 class="works-page-heading"><img src="img/h2/Works.png" alt="Works"></h1>
 
   <div class="works-grid">
-    <div class="works-card">
+    <div class="works-card" data-title="Medical" data-img1="img/work01.png" data-img2="img/work02.png" data-img3="img/work03.png">
       <img class="works-card-img" src="img/work01.png" alt="">
       <div class="works-card-overlay"></div>
       <div class="works-card-info"><p class="works-card-title">Medical</p></div>
     </div>
-    <div class="works-card">
+    <div class="works-card" data-title="Dental" data-img1="img/work02.png" data-img2="img/work03.png" data-img3="img/work04.png">
       <img class="works-card-img" src="img/work02.png" alt="">
       <div class="works-card-overlay"></div>
       <div class="works-card-info"><p class="works-card-title">Dental</p></div>
     </div>
-    <div class="works-card">
+    <div class="works-card" data-title="Dental" data-img1="img/work03.png" data-img2="img/work04.png" data-img3="img/work01.png">
       <img class="works-card-img" src="img/work03.png" alt="">
       <div class="works-card-overlay"></div>
       <div class="works-card-info"><p class="works-card-title">Dental</p></div>
     </div>
-    <div class="works-card">
+    <div class="works-card" data-title="Dental" data-img1="img/work04.png" data-img2="img/work01.png" data-img3="img/work02.png">
       <img class="works-card-img" src="img/work04.png" alt="">
       <div class="works-card-overlay"></div>
       <div class="works-card-info"><p class="works-card-title">Dental</p></div>
     </div>
-    <div class="works-card">
+    <div class="works-card" data-title="Medical" data-img1="img/work01.png" data-img2="img/work02.png" data-img3="img/work03.png">
       <img class="works-card-img" src="img/work01.png" alt="">
       <div class="works-card-overlay"></div>
       <div class="works-card-info"><p class="works-card-title">Medical</p></div>
     </div>
-    <div class="works-card">
+    <div class="works-card" data-title="Dental" data-img1="img/work02.png" data-img2="img/work03.png" data-img3="img/work04.png">
       <img class="works-card-img" src="img/work02.png" alt="">
       <div class="works-card-overlay"></div>
       <div class="works-card-info"><p class="works-card-title">Dental</p></div>
     </div>
-    <div class="works-card">
+    <div class="works-card" data-title="Dental" data-img1="img/work03.png" data-img2="img/work04.png" data-img3="img/work01.png">
       <img class="works-card-img" src="img/work03.png" alt="">
       <div class="works-card-overlay"></div>
       <div class="works-card-info"><p class="works-card-title">Dental</p></div>
     </div>
-    <div class="works-card">
+    <div class="works-card" data-title="Dental" data-img1="img/work04.png" data-img2="img/work01.png" data-img3="img/work02.png">
       <img class="works-card-img" src="img/work04.png" alt="">
       <div class="works-card-overlay"></div>
       <div class="works-card-info"><p class="works-card-title">Dental</p></div>
     </div>
-    <div class="works-card">
+    <div class="works-card" data-title="Medical" data-img1="img/work01.png" data-img2="img/work02.png" data-img3="img/work03.png">
       <img class="works-card-img" src="img/work01.png" alt="">
       <div class="works-card-overlay"></div>
       <div class="works-card-info"><p class="works-card-title">Medical</p></div>
     </div>
-    <div class="works-card">
+    <div class="works-card" data-title="Dental" data-img1="img/work02.png" data-img2="img/work03.png" data-img3="img/work04.png">
       <img class="works-card-img" src="img/work02.png" alt="">
       <div class="works-card-overlay"></div>
       <div class="works-card-info"><p class="works-card-title">Dental</p></div>
     </div>
-    <div class="works-card">
+    <div class="works-card" data-title="Dental" data-img1="img/work03.png" data-img2="img/work04.png" data-img3="img/work01.png">
       <img class="works-card-img" src="img/work03.png" alt="">
       <div class="works-card-overlay"></div>
       <div class="works-card-info"><p class="works-card-title">Dental</p></div>
     </div>
-    <div class="works-card">
+    <div class="works-card" data-title="Dental" data-img1="img/work04.png" data-img2="img/work01.png" data-img3="img/work02.png">
       <img class="works-card-img" src="img/work04.png" alt="">
       <div class="works-card-overlay"></div>
       <div class="works-card-info"><p class="works-card-title">Dental</p></div>
     </div>
   </div>
 
-  <div class="works-contact">
-    <a href="mailto:info@dopo.jp">CONTACT</a>
-  </div>
 </section>
 
 <footer class="site-footer">
@@ -506,6 +548,70 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
     <p>Copyright© <?php echo date('Y'); ?>   Design Office Plus One Co., Ltd.. All Rights Reserved.</p>
   </div>
 </footer>
+
+<!-- MODAL -->
+<div id="works-modal">
+  <div id="works-modal-inner">
+    <button id="works-modal-close">×</button>
+    <p id="works-modal-title"></p>
+    <div id="works-modal-images">
+      <img id="works-modal-img1" src="" alt="">
+      <img id="works-modal-img2" src="" alt="">
+      <img id="works-modal-img3" src="" alt="">
+    </div>
+  </div>
+</div>
+
+<script>
+const modal = document.getElementById('works-modal');
+const modalTitle = document.getElementById('works-modal-title');
+const modalImg1 = document.getElementById('works-modal-img1');
+const modalImg2 = document.getElementById('works-modal-img2');
+const modalImg3 = document.getElementById('works-modal-img3');
+const closeBtn = document.getElementById('works-modal-close');
+const isTouch = ('ontouchstart' in window);
+
+let hoverTimer;
+
+function openModal(card) {
+  modalTitle.textContent = card.dataset.title || '';
+  modalImg1.src = card.dataset.img1 || '';
+  modalImg2.src = card.dataset.img2 || '';
+  modalImg3.src = card.dataset.img3 || '';
+  modal.classList.add('open');
+}
+
+function closeModal() {
+  modal.classList.remove('open');
+}
+
+document.querySelectorAll('.works-card').forEach(card => {
+  if (isTouch) {
+    // タッチデバイス：タップで開く
+    card.addEventListener('click', () => openModal(card));
+  } else {
+    // デスクトップ：ホバーで開く（200ms遅延）
+    card.addEventListener('mouseenter', () => {
+      hoverTimer = setTimeout(() => openModal(card), 200);
+    });
+    card.addEventListener('mouseleave', () => {
+      clearTimeout(hoverTimer);
+    });
+    // クリックでも開く
+    card.addEventListener('click', () => openModal(card));
+  }
+});
+
+closeBtn.addEventListener('click', closeModal);
+
+modal.addEventListener('click', (e) => {
+  if (e.target === modal) closeModal();
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeModal();
+});
+</script>
 
 </body>
 </html>
