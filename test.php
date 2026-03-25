@@ -281,6 +281,7 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
   display: block;
   width: 1px;
   height: 60px;
+  background: #999;
   animation: scrollLine 1.8s ease-in-out infinite;
 }
 
