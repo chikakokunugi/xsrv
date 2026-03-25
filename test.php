@@ -141,6 +141,7 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
   top: 0; left: 0;
   height: 100%;
   display: flex;
+  z-index: 0;
 }
 
 .img-slide {
@@ -148,6 +149,7 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
   height: 100%;
   background-size: cover;
   background-position: 50% 50%;
+  position: relative;
 }
 
 /* ===== 改行制御 ===== */
@@ -233,17 +235,12 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
 
 .panel-label {
   position: absolute;
-  bottom: 50px;
-  left: 50%;
-  transform: translateX(-50%);
-  writing-mode: vertical-rl;
-  color: #fff;
-  font-size: 3rem;
-  font-weight: 900;
-  letter-spacing: 0.5em;
+  bottom: 60px;
+  right: 20px;
+  max-height: 120px;
+  width: auto;
   z-index: 10;
   pointer-events: none;
-  text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
 }
 
 /* ===== PHILOSOPHY SECTION ===== */
@@ -253,7 +250,7 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 80px 20px 30px;
+  padding: 80px 20px 40px;
   box-sizing: border-box;
   position: relative;
 }
@@ -325,7 +322,7 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
 /* ===== NEW WORKS SECTION ===== */
 .works-section {
   width: 100%;
-  padding: 80px 0 80px;
+  padding: 80px 0 40px;
   overflow: hidden;
 }
 
@@ -382,7 +379,7 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
 .works-card-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.25);
+  background: rgba(0, 0, 0, 0.45);
 }
 .works-card-info {
   position: absolute;
@@ -403,10 +400,10 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
   padding: 20px 40px 0;
 }
 .works-more a {
-  font-size: 0.85rem;
+  font-size: 1.2rem;
   color: #111;
   text-decoration: none;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.15em;
   position: relative;
   padding-bottom: 3px;
 }
@@ -425,20 +422,26 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
 .works-more a:hover::after {
   transform: scaleX(1);
 }
-	
+
+@media (max-width: 768px) {
+  .works-more a {
+    font-size: 1rem;
+  }
+}
+
 /* ===== WORKFLOW SECTION ===== */
 .workflow-title {
-	  margin: 0 0 50px -40px;
-
+  text-align: center;
+  margin: 0 0 24px;
 }
-	
-.workflow-title img{
-	max-width: 300px;
+
+.workflow-title img {
+  max-width: 300px;
 }
 	
 .workflow-section {
   width: 100%;
-  padding: 100px 40px 40px;
+  padding: 80px 40px 80px;
   box-sizing: border-box;
   position: relative;
 }
@@ -460,12 +463,6 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
   min-width: 80px;
   padding: 0;
   position: relative;
-}
-
-@media (max-width: 1000px) {
-  .workflow-title {
-    margin-left: 0;
-  }
 }
 
 @media (max-width: 768px) {
@@ -596,8 +593,7 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
     max-width: 60%;
   }
   .workflow-title {
-    text-align: center;
-    margin: 0 0 30px 0;
+    margin-bottom: 30px;
   }
   .workflow-title img {
     max-width: 60%;
@@ -690,6 +686,7 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
 .footer-map iframe {
   width: 100%;
   height: 100%;
+  filter: grayscale(40%) saturate(80%);
   display: block;
 }
 
@@ -812,26 +809,11 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
 
 <!-- ACCORDION SLIDER -->
 <div class="accordion-wrapper" id="wrapper">
-  <div class="panel">
-    <div class="img-track"></div>
-<!--    <span class="panel-label">JAPAN</span>-->
-  </div>
-  <div class="panel">
-    <div class="img-track"></div>
-<!--    <span class="panel-label">ASIA</span>-->
-  </div>
-  <div class="panel">
-    <div class="img-track"></div>
-<!--    <span class="panel-label">EUROPE</span>-->
-  </div>
-  <div class="panel">
-    <div class="img-track"></div>
-<!--    <span class="panel-label">AMERICA</span>-->
-  </div>
-  <div class="panel">
-    <div class="img-track"></div>
-<!--    <span class="panel-label">AFRICA</span>-->
-  </div>
+  <div class="panel"><div class="img-track"></div></div>
+  <div class="panel"><div class="img-track"></div></div>
+  <div class="panel"><div class="img-track"></div></div>
+  <div class="panel"><div class="img-track"></div></div>
+  <div class="panel"><div class="img-track"></div></div>
 </div>
 
 <!-- PHILOSOPHY SECTION -->
@@ -1070,7 +1052,7 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
 	
 <script>
 const IMAGE_QUEUE = [
-  'image6.webp',
+  'アセット 1.png',
   'image7.webp',
   'image3.webp',
   'image4.webp',
@@ -1080,13 +1062,24 @@ const DURATION = 1.2;
 const INTERVAL = 2500;
 const EASE = 'power4.inOut';
 
+const CITY_LABELS = ['img/kobe.png', 'img/himeji.png', 'img/osaka.png', 'img/kyoto.png', 'img/nara.png'];
+
 const panels = Array.from(document.querySelectorAll('.panel'));
 
 const state = panels.map((panel, i) => ({
   panel,
   track: panel.querySelector('.img-track'),
   queueIndex: i % IMAGE_QUEUE.length,
+  index: i,
 }));
+
+function createLabel(index) {
+  const label = document.createElement('img');
+  label.className = 'panel-label';
+  label.src = CITY_LABELS[index];
+  label.alt = '';
+  return label;
+}
 
 function initPanel(s) {
   const panelW = s.panel.offsetWidth;
@@ -1098,6 +1091,7 @@ function initPanel(s) {
   slide.className = 'img-slide';
   slide.style.width = panelW + 'px';
   slide.style.backgroundImage = `url('${IMAGE_QUEUE[s.queueIndex]}')`;
+  slide.appendChild(createLabel(s.queueIndex));
   track.appendChild(slide);
 }
 
@@ -1125,6 +1119,7 @@ function moveNext() {
     nextSlide.style.width = panelW + 'px';
     const nextIndex = (s.queueIndex + 1) % IMAGE_QUEUE.length;
     nextSlide.style.backgroundImage = `url('${IMAGE_QUEUE[nextIndex]}')`;
+    nextSlide.appendChild(createLabel(nextIndex));
     track.appendChild(nextSlide);
     track.style.width = (panelW * 2) + 'px';
     tl.to(track, {

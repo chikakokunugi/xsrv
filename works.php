@@ -148,12 +148,12 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
 .works-card-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.25);
+  background: rgba(0, 0, 0, 0.45);
   transition: background 0.3s ease;
 }
 
 .works-card:hover .works-card-overlay {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.7);
 }
 
 .works-card-view {
@@ -235,7 +235,8 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
 }
 
 #works-modal-title {
-  font-size: 0.85rem;
+  font-size: 1.8rem;
+  font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: #999;
@@ -260,7 +261,26 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
     padding: 40px 16px 24px;
   }
   #works-modal-images {
+    grid-template-columns: 1fr 1fr;
     gap: 8px;
+  }
+  #works-modal-images img:first-child {
+    grid-column: 1 / -1;
+  }
+  .works-card-view {
+    display: none;
+  }
+  /* タップ可能をわかりやすくする */
+  .works-card::after {
+    content: '+';
+    position: absolute;
+    bottom: 8px;
+    right: 10px;
+    color: rgba(255,255,255,0.85);
+    font-size: 1.3rem;
+    font-weight: 300;
+    line-height: 1;
+    pointer-events: none;
   }
 }
 
@@ -293,6 +313,7 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
   width: 100%;
   height: 100%;
   display: block;
+  filter: grayscale(40%) saturate(80%);
 }
 
 .footer-mail {

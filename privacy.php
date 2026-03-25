@@ -222,6 +222,7 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
   width: 100%;
   height: 100%;
   display: block;
+  filter: grayscale(40%) saturate(80%);
 }
 
 .footer-mail {
