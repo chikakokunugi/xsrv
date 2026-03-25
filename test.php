@@ -153,8 +153,8 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
 /* ===== 改行制御 ===== */
 .br-sp { display: none; }
 
-/* ===== スマホのみ: 480px以下 ===== */
-@media (max-width: 480px) {
+/* ===== スマホ・タブレット: 768px以下 ===== */
+@media (max-width: 768px) {
   .philosophy-scroll {
     display: none !important;
   }
