@@ -229,6 +229,7 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
   }
   .accordion-wrapper {
     height: calc(100vh - 72px);
+    height: calc(100dvh - 72px);
     margin-top: 72px;
   }
 }
@@ -236,11 +237,22 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
 .panel-label {
   position: absolute;
   bottom: 60px;
-  right: 20px;
-  max-height: 120px;
+  max-height: 450px;
   width: auto;
   z-index: 10;
   pointer-events: none;
+  filter: drop-shadow(0 0 6px rgba(0,0,0,0.5)) drop-shadow(0 0 12px rgba(0,0,0,0.9));
+}
+/* ラベル位置はJSで動的に設定 */
+@media (max-width: 768px) and (min-width: 481px) {
+  .panel-label {
+    max-height: 150px !important;
+  }
+}
+@media (max-width: 480px) {
+  .panel-label {
+    max-height: 100px !important;
+  }
 }
 
 /* ===== PHILOSOPHY SECTION ===== */
@@ -373,13 +385,14 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
 
 .works-card-img {
   width: 100%;
-  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
   display: block;
 }
 .works-card-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(0, 0, 0, 0.35);
 }
 .works-card-info {
   position: absolute;
@@ -836,86 +849,86 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
   <h2 class="works-title"><img class="" src="img/h2/NewWorks.png" alt="Philosophy"></h2>
   <div class="works-slider-outer" id="worksSlider">
     <div class="works-slider-track" id="worksTrack">
-      <!-- 12枚のカード -->
+      <!-- 12枚のカード（12→1の順） -->
       <div class="works-card">
-        <img class="works-card-img" src="img/work01.png" alt="">
+        <img class="works-card-img" src="img/works/12-1.jpg" alt="">
+        <div class="works-card-overlay"></div>
+        <div class="works-card-info">
+          <p class="works-card-title">Dental</p>
+        </div>
+      </div>
+      <div class="works-card">
+        <img class="works-card-img" src="img/works/11-1.jpg" alt="">
+        <div class="works-card-overlay"></div>
+        <div class="works-card-info">
+          <p class="works-card-title">Dental</p>
+        </div>
+      </div>
+      <div class="works-card">
+        <img class="works-card-img" src="img/works/10-1.jpg" alt="">
+        <div class="works-card-overlay"></div>
+        <div class="works-card-info">
+          <p class="works-card-title">Dental</p>
+        </div>
+      </div>
+      <div class="works-card">
+        <img class="works-card-img" src="img/works/9-1.jpg" alt="">
         <div class="works-card-overlay"></div>
         <div class="works-card-info">
           <p class="works-card-title">Medical</p>
         </div>
       </div>
       <div class="works-card">
-        <img class="works-card-img" src="img/work02.png" alt="">
+        <img class="works-card-img" src="img/works/8-1.jpg" alt="">
         <div class="works-card-overlay"></div>
         <div class="works-card-info">
           <p class="works-card-title">Dental</p>
         </div>
       </div>
       <div class="works-card">
-        <img class="works-card-img" src="img/work03.png" alt="">
+        <img class="works-card-img" src="img/works/7-1.jpg" alt="">
         <div class="works-card-overlay"></div>
         <div class="works-card-info">
           <p class="works-card-title">Dental</p>
         </div>
       </div>
       <div class="works-card">
-        <img class="works-card-img" src="img/work04.png" alt="">
+        <img class="works-card-img" src="img/works/6-1.jpg" alt="">
         <div class="works-card-overlay"></div>
         <div class="works-card-info">
           <p class="works-card-title">Dental</p>
         </div>
       </div>
       <div class="works-card">
-        <img class="works-card-img" src="img/work01.png" alt="">
-        <div class="works-card-overlay"></div>
-        <div class="works-card-info">
-          <p class="works-card-title">Medical</p>
-        </div>
-      </div>
-      <div class="works-card">
-        <img class="works-card-img" src="img/work02.png" alt="">
+        <img class="works-card-img" src="img/works/5-1.jpg" alt="">
         <div class="works-card-overlay"></div>
         <div class="works-card-info">
           <p class="works-card-title">Dental</p>
         </div>
       </div>
       <div class="works-card">
-        <img class="works-card-img" src="img/work03.png" alt="">
+        <img class="works-card-img" src="img/works/4-1.jpg" alt="">
         <div class="works-card-overlay"></div>
         <div class="works-card-info">
           <p class="works-card-title">Dental</p>
         </div>
       </div>
       <div class="works-card">
-        <img class="works-card-img" src="img/work04.png" alt="">
+        <img class="works-card-img" src="img/works/3-1.jpg" alt="">
         <div class="works-card-overlay"></div>
         <div class="works-card-info">
           <p class="works-card-title">Dental</p>
         </div>
       </div>
       <div class="works-card">
-        <img class="works-card-img" src="img/work01.png" alt="">
-        <div class="works-card-overlay"></div>
-        <div class="works-card-info">
-          <p class="works-card-title">Medical</p>
-        </div>
-      </div>
-      <div class="works-card">
-        <img class="works-card-img" src="img/work02.png" alt="">
+        <img class="works-card-img" src="img/works/2-1.jpg" alt="">
         <div class="works-card-overlay"></div>
         <div class="works-card-info">
           <p class="works-card-title">Dental</p>
         </div>
       </div>
       <div class="works-card">
-        <img class="works-card-img" src="img/work03.png" alt="">
-        <div class="works-card-overlay"></div>
-        <div class="works-card-info">
-          <p class="works-card-title">Dental</p>
-        </div>
-      </div>
-      <div class="works-card">
-        <img class="works-card-img" src="img/work04.png" alt="">
+        <img class="works-card-img" src="img/works/1-1.jpg" alt="">
         <div class="works-card-overlay"></div>
         <div class="works-card-info">
           <p class="works-card-title">Dental</p>
@@ -1052,11 +1065,11 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
 	
 <script>
 const IMAGE_QUEUE = [
-  'アセット 1.png',
-  'image7.webp',
-  'image3.webp',
-  'image4.webp',
-  'image5.webp',
+  '1.jpeg',
+  '2.jpeg',
+  '3.png',
+  '4.png',
+  '5.jpeg',
 ];
 const DURATION = 1.2;
 const INTERVAL = 2500;
@@ -1073,11 +1086,28 @@ const state = panels.map((panel, i) => ({
   index: i,
 }));
 
-function createLabel(index) {
+// ラベル画像の寸法キャッシュ
+const labelDims = {};
+const MAX_LABEL_H = window.innerWidth <= 480 ? 100 : window.innerWidth <= 768 ? 150 : 250;
+
+function getLabelRight(imgIndex) {
+  const src = CITY_LABELS[imgIndex];
+  const dim = labelDims[src];
+  if (!dim) return '20px';
+  const scale = Math.min(1, MAX_LABEL_H / dim.h);
+  const renderedW = dim.w * scale;
+  const narrowPanelW = state[1].panel.offsetWidth;
+  const overlap = 50; // margin-left: -50px による重なり
+  return Math.max(5, (narrowPanelW - renderedW) / 2 - overlap / 2) + 'px';
+}
+
+function createLabel(imgIndex, panelIndex) {
   const label = document.createElement('img');
   label.className = 'panel-label';
-  label.src = CITY_LABELS[index];
+  label.src = CITY_LABELS[imgIndex];
   label.alt = '';
+  label.style.right = getLabelRight(imgIndex);
+  label.style.left = 'auto';
   return label;
 }
 
@@ -1091,11 +1121,9 @@ function initPanel(s) {
   slide.className = 'img-slide';
   slide.style.width = panelW + 'px';
   slide.style.backgroundImage = `url('${IMAGE_QUEUE[s.queueIndex]}')`;
-  slide.appendChild(createLabel(s.queueIndex));
+  slide.appendChild(createLabel(s.queueIndex, s.index));
   track.appendChild(slide);
 }
-
-state.forEach(initPanel);
 
 let isAnimating = false;
 
@@ -1119,7 +1147,7 @@ function moveNext() {
     nextSlide.style.width = panelW + 'px';
     const nextIndex = (s.queueIndex + 1) % IMAGE_QUEUE.length;
     nextSlide.style.backgroundImage = `url('${IMAGE_QUEUE[nextIndex]}')`;
-    nextSlide.appendChild(createLabel(nextIndex));
+    nextSlide.appendChild(createLabel(nextIndex, s.index));
     track.appendChild(nextSlide);
     track.style.width = (panelW * 2) + 'px';
     tl.to(track, {
@@ -1130,7 +1158,21 @@ function moveNext() {
   });
 }
 
-setInterval(moveNext, INTERVAL);
+// ラベル画像をプリロードしてから起動
+let _loadedCount = 0;
+CITY_LABELS.forEach(src => {
+  const img = new Image();
+  const done = () => {
+    labelDims[src] = { w: img.naturalWidth || 60, h: img.naturalHeight || 200 };
+    if (++_loadedCount === CITY_LABELS.length) {
+      state.forEach(initPanel);
+      setInterval(moveNext, INTERVAL);
+    }
+  };
+  img.onload = done;
+  img.onerror = done;
+  img.src = src;
+});
 
 // ===== WORKS SLIDER =====
 (function() {
@@ -1168,8 +1210,14 @@ setInterval(moveNext, INTERVAL);
     track.style.transition = animate ? 'transform 0.9s cubic-bezier(0.4, 0, 0.2, 1)' : 'none';
     track.style.transform = `translateX(${-offset}px)`;
 
+    // transitionendが発火しない場合のフォールバック
+    const fallback = setTimeout(() => {
+      isAnimating = false;
+    }, 1100);
+
     track.addEventListener('transitionend', function onEnd() {
       track.removeEventListener('transitionend', onEnd);
+      clearTimeout(fallback);
       // 複製分に達したらリセット（瞬時・アニメなし）
       if (currentIndex >= total / getCols()) {
         currentIndex = 0;

@@ -131,6 +131,12 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
   overflow: hidden;
   background: #ccc;
   aspect-ratio: 1 / 1;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.works-card.is-pressed {
+  transform: scale(0.97);
 }
 
 .works-card-img {
@@ -141,18 +147,18 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
   transition: transform 0.4s ease;
 }
 
-.works-card:hover .works-card-img {
+.works-card.is-hover .works-card-img {
   transform: scale(1.04);
 }
 
 .works-card-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(0, 0, 0, 0.35);
   transition: background 0.3s ease;
 }
 
-.works-card:hover .works-card-overlay {
+.works-card.is-hover .works-card-overlay {
   background: rgba(0, 0, 0, 0.7);
 }
 
@@ -166,7 +172,7 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
   transition: opacity 0.3s ease;
 }
 
-.works-card:hover .works-card-view {
+.works-card.is-hover .works-card-view {
   opacity: 1;
 }
 
@@ -195,10 +201,6 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
   margin: 0;
 }
 
-.works-card {
-  cursor: pointer;
-}
-
 /* ===== MODAL ===== */
 #works-modal {
   display: none;
@@ -216,10 +218,14 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
 
 #works-modal-inner {
   background: #fff;
-  padding: 40px 32px 32px;
-  max-width: 860px;
+  padding: 40px 32px 16px;
+  max-width: 560px;
   width: 90%;
   position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 #works-modal-close {
@@ -235,37 +241,86 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
 }
 
 #works-modal-title {
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: #999;
-  margin: 0 0 20px;
+  margin: 0 0 10px;
+  flex-shrink: 0;
 }
 
 #works-modal-images {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
-#works-modal-images img {
+#works-modal-main {
   width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#works-modal-main img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
   display: block;
 }
+
+
+#works-modal-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+  flex-shrink: 0;
+}
+
+.modal-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ccc;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.modal-dot.active {
+  background: #333;
+}
+
+#works-modal-thumbs {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+  flex-shrink: 0;
+}
+
+#works-modal-thumbs img {
+  width: calc((100% - 12px) / 3);
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 4px;
+  opacity: 0.7;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+#works-modal-thumbs img:hover {
+  opacity: 1;
+}
+
 
 @media (max-width: 480px) {
   #works-modal-inner {
     padding: 40px 16px 24px;
-  }
-  #works-modal-images {
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-  }
-  #works-modal-images img:first-child {
-    grid-column: 1 / -1;
   }
   .works-card-view {
     display: none;
@@ -497,74 +552,74 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
   <h1 class="works-page-heading"><img src="img/h2/Works.png" alt="Works"></h1>
 
   <div class="works-grid">
-    <div class="works-card" data-title="Medical" data-img1="img/work01.png" data-img2="img/work02.png" data-img3="img/work03.png">
-      <img class="works-card-img" src="img/work01.png" alt="">
+    <div class="works-card" data-title="Dental" data-img1="img/works/12-1.jpg" data-img2="img/works/12-2.jpg" data-img3="img/works/12-3.jpg" data-img4="img/works/12-4.jpg">
+      <img class="works-card-img" src="img/works/12-1.jpg" alt="">
+      <div class="works-card-overlay"></div>
+      <div class="works-card-view"><span>View</span></div>
+      <div class="works-card-info"><p class="works-card-title">Dental</p></div>
+    </div>
+    <div class="works-card" data-title="Dental" data-img1="img/works/11-1.jpg" data-img2="img/works/11-2.jpg" data-img3="img/works/11-3.jpg" data-img4="img/works/11-4.jpg">
+      <img class="works-card-img" src="img/works/11-1.jpg" alt="">
+      <div class="works-card-overlay"></div>
+      <div class="works-card-view"><span>View</span></div>
+      <div class="works-card-info"><p class="works-card-title">Dental</p></div>
+    </div>
+    <div class="works-card" data-title="Dental" data-img1="img/works/10-1.jpg" data-img2="img/works/10-2.jpg" data-img3="img/works/10-3.jpg" data-img4="img/works/10-4.jpg">
+      <img class="works-card-img" src="img/works/10-1.jpg" alt="">
+      <div class="works-card-overlay"></div>
+      <div class="works-card-view"><span>View</span></div>
+      <div class="works-card-info"><p class="works-card-title">Dental</p></div>
+    </div>
+    <div class="works-card" data-title="Medical" data-img1="img/works/9-1.jpg" data-img2="img/works/9-2.jpg" data-img3="img/works/9-3.jpg" data-img4="img/works/9-4.jpg">
+      <img class="works-card-img" src="img/works/9-1.jpg" alt="">
       <div class="works-card-overlay"></div>
       <div class="works-card-view"><span>View</span></div>
       <div class="works-card-info"><p class="works-card-title">Medical</p></div>
     </div>
-    <div class="works-card" data-title="Dental" data-img1="img/work02.png" data-img2="img/work03.png" data-img3="img/work04.png">
-      <img class="works-card-img" src="img/work02.png" alt="">
+    <div class="works-card" data-title="Dental" data-img1="img/works/8-1.jpg" data-img2="img/works/8-2.jpg" data-img3="img/works/8-3.jpg" data-img4="img/works/8-4.jpg">
+      <img class="works-card-img" src="img/works/8-1.jpg" alt="">
       <div class="works-card-overlay"></div>
       <div class="works-card-view"><span>View</span></div>
       <div class="works-card-info"><p class="works-card-title">Dental</p></div>
     </div>
-    <div class="works-card" data-title="Dental" data-img1="img/work03.png" data-img2="img/work04.png" data-img3="img/work01.png">
-      <img class="works-card-img" src="img/work03.png" alt="">
+    <div class="works-card" data-title="Dental" data-img1="img/works/7-1.jpg" data-img2="img/works/7-2.jpg" data-img3="img/works/7-3.jpg" data-img4="img/works/7-4.jpg">
+      <img class="works-card-img" src="img/works/7-1.jpg" alt="">
       <div class="works-card-overlay"></div>
       <div class="works-card-view"><span>View</span></div>
       <div class="works-card-info"><p class="works-card-title">Dental</p></div>
     </div>
-    <div class="works-card" data-title="Dental" data-img1="img/work04.png" data-img2="img/work01.png" data-img3="img/work02.png">
-      <img class="works-card-img" src="img/work04.png" alt="">
+    <div class="works-card" data-title="Dental" data-img1="img/works/6-1.jpg" data-img2="img/works/6-2.jpg" data-img3="img/works/6-3.jpg" data-img4="img/works/6-4.jpg">
+      <img class="works-card-img" src="img/works/6-1.jpg" alt="">
       <div class="works-card-overlay"></div>
       <div class="works-card-view"><span>View</span></div>
       <div class="works-card-info"><p class="works-card-title">Dental</p></div>
     </div>
-    <div class="works-card" data-title="Medical" data-img1="img/work01.png" data-img2="img/work02.png" data-img3="img/work03.png">
-      <img class="works-card-img" src="img/work01.png" alt="">
-      <div class="works-card-overlay"></div>
-      <div class="works-card-view"><span>View</span></div>
-      <div class="works-card-info"><p class="works-card-title">Medical</p></div>
-    </div>
-    <div class="works-card" data-title="Dental" data-img1="img/work02.png" data-img2="img/work03.png" data-img3="img/work04.png">
-      <img class="works-card-img" src="img/work02.png" alt="">
+    <div class="works-card" data-title="Dental" data-img1="img/works/5-1.jpg" data-img2="img/works/5-2.jpg" data-img3="img/works/5-3.jpg" data-img4="img/works/5-4.jpg">
+      <img class="works-card-img" src="img/works/5-1.jpg" alt="">
       <div class="works-card-overlay"></div>
       <div class="works-card-view"><span>View</span></div>
       <div class="works-card-info"><p class="works-card-title">Dental</p></div>
     </div>
-    <div class="works-card" data-title="Dental" data-img1="img/work03.png" data-img2="img/work04.png" data-img3="img/work01.png">
-      <img class="works-card-img" src="img/work03.png" alt="">
+    <div class="works-card" data-title="Dental" data-img1="img/works/4-1.jpg" data-img2="img/works/4-2.jpg" data-img3="img/works/4-3.jpg" data-img4="img/works/4-4.jpg">
+      <img class="works-card-img" src="img/works/4-1.jpg" alt="">
       <div class="works-card-overlay"></div>
       <div class="works-card-view"><span>View</span></div>
       <div class="works-card-info"><p class="works-card-title">Dental</p></div>
     </div>
-    <div class="works-card" data-title="Dental" data-img1="img/work04.png" data-img2="img/work01.png" data-img3="img/work02.png">
-      <img class="works-card-img" src="img/work04.png" alt="">
+    <div class="works-card" data-title="Dental" data-img1="img/works/3-1.jpg" data-img2="img/works/3-2.jpg" data-img3="img/works/3-3.jpg" data-img4="img/works/3-4.jpg">
+      <img class="works-card-img" src="img/works/3-1.jpg" alt="">
       <div class="works-card-overlay"></div>
       <div class="works-card-view"><span>View</span></div>
       <div class="works-card-info"><p class="works-card-title">Dental</p></div>
     </div>
-    <div class="works-card" data-title="Medical" data-img1="img/work01.png" data-img2="img/work02.png" data-img3="img/work03.png">
-      <img class="works-card-img" src="img/work01.png" alt="">
-      <div class="works-card-overlay"></div>
-      <div class="works-card-view"><span>View</span></div>
-      <div class="works-card-info"><p class="works-card-title">Medical</p></div>
-    </div>
-    <div class="works-card" data-title="Dental" data-img1="img/work02.png" data-img2="img/work03.png" data-img3="img/work04.png">
-      <img class="works-card-img" src="img/work02.png" alt="">
+    <div class="works-card" data-title="Dental" data-img1="img/works/2-1.jpg" data-img2="img/works/2-2.jpg" data-img3="img/works/2-3.jpg" data-img4="img/works/2-4.jpg">
+      <img class="works-card-img" src="img/works/2-1.jpg" alt="">
       <div class="works-card-overlay"></div>
       <div class="works-card-view"><span>View</span></div>
       <div class="works-card-info"><p class="works-card-title">Dental</p></div>
     </div>
-    <div class="works-card" data-title="Dental" data-img1="img/work03.png" data-img2="img/work04.png" data-img3="img/work01.png">
-      <img class="works-card-img" src="img/work03.png" alt="">
-      <div class="works-card-overlay"></div>
-      <div class="works-card-view"><span>View</span></div>
-      <div class="works-card-info"><p class="works-card-title">Dental</p></div>
-    </div>
-    <div class="works-card" data-title="Dental" data-img1="img/work04.png" data-img2="img/work01.png" data-img3="img/work02.png">
-      <img class="works-card-img" src="img/work04.png" alt="">
+    <div class="works-card" data-title="Dental" data-img1="img/works/1-1.jpg" data-img2="img/works/1-2.jpg" data-img3="img/works/1-3.jpg" data-img4="img/works/1-4.jpg">
+      <img class="works-card-img" src="img/works/1-1.jpg" alt="">
       <div class="works-card-overlay"></div>
       <div class="works-card-view"><span>View</span></div>
       <div class="works-card-info"><p class="works-card-title">Dental</p></div>
@@ -618,10 +673,19 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
     <button id="works-modal-close">×</button>
     <p id="works-modal-title"></p>
     <div id="works-modal-images">
-      <img id="works-modal-img1" src="" alt="">
-      <img id="works-modal-img2" src="" alt="">
-      <img id="works-modal-img3" src="" alt="">
+      <div id="works-modal-track">
+        <div id="works-modal-main">
+          <img id="works-modal-img1" src="" alt="">
+        </div>
+      </div>
     </div>
+    <div id="works-modal-dots">
+      <span class="modal-dot active" data-index="0"></span>
+      <span class="modal-dot" data-index="1"></span>
+      <span class="modal-dot" data-index="2"></span>
+      <span class="modal-dot" data-index="3"></span>
+    </div>
+    <div id="works-modal-thumbs"></div>
   </div>
 </div>
 
@@ -629,15 +693,46 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
 const modal = document.getElementById('works-modal');
 const modalTitle = document.getElementById('works-modal-title');
 const modalImg1 = document.getElementById('works-modal-img1');
-const modalImg2 = document.getElementById('works-modal-img2');
-const modalImg3 = document.getElementById('works-modal-img3');
 const closeBtn = document.getElementById('works-modal-close');
+const dots = document.querySelectorAll('.modal-dot');
+const thumbsContainer = document.getElementById('works-modal-thumbs');
+
+let currentSlide = 0;
+let touchStartX = 0;
+let touchEndX = 0;
+let allSrcs = [];
+
+function updateThumbs() {
+  thumbsContainer.innerHTML = '';
+  allSrcs.forEach((src, i) => {
+    if (i === currentSlide) return;
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = '';
+    img.addEventListener('click', (e) => {
+      e.stopPropagation();
+      goToSlide(i);
+    });
+    thumbsContainer.appendChild(img);
+  });
+}
+
+function goToSlide(index) {
+  currentSlide = index;
+  modalImg1.src = allSrcs[index];
+  dots.forEach((d, i) => d.classList.toggle('active', i === index));
+  updateThumbs();
+}
 
 function openModal(card) {
   modalTitle.textContent = card.dataset.title || '';
-  modalImg1.src = card.dataset.img1 || '';
-  modalImg2.src = card.dataset.img2 || '';
-  modalImg3.src = card.dataset.img3 || '';
+  allSrcs = [card.dataset.img1, card.dataset.img2, card.dataset.img3, card.dataset.img4];
+  modalImg1.src = allSrcs[0] || '';
+  goToSlide(0);
+  // 画面高さに合わせてモーダルを制御
+  const innerEl = document.getElementById('works-modal-inner');
+  const availH = window.innerHeight * 0.88;
+  innerEl.style.maxHeight = availH + 'px';
   modal.classList.add('open');
 }
 
@@ -645,8 +740,20 @@ function closeModal() {
   modal.classList.remove('open');
 }
 
+
 document.querySelectorAll('.works-card').forEach(card => {
   card.addEventListener('click', () => openModal(card));
+  card.addEventListener('mouseenter', () => card.classList.add('is-hover'));
+  card.addEventListener('mouseleave', () => card.classList.remove('is-hover'));
+  card.addEventListener('touchstart', () => {
+    card.classList.add('is-pressed');
+  }, { passive: true });
+  card.addEventListener('touchend', () => {
+    setTimeout(() => card.classList.remove('is-pressed'), 150);
+  }, { passive: true });
+  card.addEventListener('touchcancel', () => {
+    card.classList.remove('is-pressed');
+  }, { passive: true });
 });
 
 closeBtn.addEventListener('click', closeModal);
@@ -657,6 +764,32 @@ modal.addEventListener('click', (e) => {
 
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeModal();
+});
+
+
+// ドットクリック
+dots.forEach(dot => {
+  dot.addEventListener('click', () => goToSlide(parseInt(dot.dataset.index)));
+});
+
+// スワイプ
+const imagesContainer = document.getElementById('works-modal-images');
+
+imagesContainer.addEventListener('touchstart', (e) => {
+  touchStartX = e.changedTouches[0].clientX;
+});
+
+imagesContainer.addEventListener('touchend', (e) => {
+  touchEndX = e.changedTouches[0].clientX;
+  const diff = touchStartX - touchEndX;
+  if (diff > 30) {
+    goToSlide(currentSlide < 3 ? currentSlide + 1 : 0);
+  } else if (diff < -30) {
+    goToSlide(currentSlide > 0 ? currentSlide - 1 : 3);
+  } else {
+    // タップ（ほぼ動かなかった場合）→ 次へ
+    goToSlide(currentSlide < 3 ? currentSlide + 1 : 0);
+  }
 });
 </script>
 
