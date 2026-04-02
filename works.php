@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="format-detection" content="telephone=no">
 <title>Works – 神戸・大阪 歯科開業、設計・施工デザインオフィス プラスワン</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; }
 body, html {
@@ -12,7 +15,7 @@ body, html {
   padding: 0;
   background: #fff;
   width: 100%;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Noto Serif JP', serif;
   scroll-behavior: smooth;
 }
 
@@ -126,15 +129,21 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
   margin: 0 auto;
 }
 
+/* ===== カード フェードインアニメーション ===== */
 .works-card {
   position: relative;
   overflow: hidden;
   background: #ccc;
   aspect-ratio: 1 / 1;
   cursor: pointer;
-  transition: transform 0.15s ease;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.4s ease, transform 1.4s ease;
 }
-
+.works-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 .works-card.is-pressed {
   transform: scale(0.97);
 }
@@ -195,10 +204,9 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
 }
 
 .works-card-title {
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.4;
-  margin: 0;
+  display: block;
+  height: 18px;
+  width: auto;
 }
 
 /* ===== MODAL ===== */
@@ -218,7 +226,7 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
 
 #works-modal-inner {
   background: #fff;
-  padding: 40px 32px 16px;
+  padding: 40px 32px 32px;
   max-width: 560px;
   width: 90%;
   position: relative;
@@ -241,13 +249,11 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
 }
 
 #works-modal-title {
-  font-size: 1.4rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #999;
+  height: 28px;
+  width: auto;
   margin: 0 0 10px;
   flex-shrink: 0;
+  align-self: flex-start;
 }
 
 #works-modal-images {
@@ -318,14 +324,11 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
 }
 
 
-@media (max-width: 480px) {
-  #works-modal-inner {
-    padding: 40px 16px 24px;
-  }
+/* タブレット以下：+アイコン表示、VIEW非表示 */
+@media (max-width: 1024px) {
   .works-card-view {
     display: none;
   }
-  /* タップ可能をわかりやすくする */
   .works-card::after {
     content: '+';
     position: absolute;
@@ -336,6 +339,18 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
     font-weight: 300;
     line-height: 1;
     pointer-events: none;
+  }
+}
+
+@media (min-width: 1025px) {
+  #works-modal-inner {
+    max-width: 760px;
+  }
+}
+
+@media (max-width: 480px) {
+  #works-modal-inner {
+    padding: 40px 16px 16px;
   }
 }
 
@@ -549,80 +564,80 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
 
 <!-- WORKS CONTENT -->
 <section class="works-page">
-  <h1 class="works-page-heading"><img src="img/h2/Works.png" alt="Works"></h1>
+  <h1 class="works-page-heading"><img src="img/h2/Works_v2.png" alt="Works"></h1>
 
   <div class="works-grid">
     <div class="works-card" data-title="Dental" data-img1="img/works/12-1.jpg" data-img2="img/works/12-2.jpg" data-img3="img/works/12-3.jpg" data-img4="img/works/12-4.jpg">
       <img class="works-card-img" src="img/works/12-1.jpg" alt="">
       <div class="works-card-overlay"></div>
       <div class="works-card-view"><span>View</span></div>
-      <div class="works-card-info"><p class="works-card-title">Dental</p></div>
+      <div class="works-card-info"><img class="works-card-title" src="img/label/dental.png" alt="Dental"></div>
     </div>
     <div class="works-card" data-title="Dental" data-img1="img/works/11-1.jpg" data-img2="img/works/11-2.jpg" data-img3="img/works/11-3.jpg" data-img4="img/works/11-4.jpg">
       <img class="works-card-img" src="img/works/11-1.jpg" alt="">
       <div class="works-card-overlay"></div>
       <div class="works-card-view"><span>View</span></div>
-      <div class="works-card-info"><p class="works-card-title">Dental</p></div>
+      <div class="works-card-info"><img class="works-card-title" src="img/label/dental.png" alt="Dental"></div>
     </div>
     <div class="works-card" data-title="Dental" data-img1="img/works/10-1.jpg" data-img2="img/works/10-2.jpg" data-img3="img/works/10-3.jpg" data-img4="img/works/10-4.jpg">
       <img class="works-card-img" src="img/works/10-1.jpg" alt="">
       <div class="works-card-overlay"></div>
       <div class="works-card-view"><span>View</span></div>
-      <div class="works-card-info"><p class="works-card-title">Dental</p></div>
+      <div class="works-card-info"><img class="works-card-title" src="img/label/dental.png" alt="Dental"></div>
     </div>
     <div class="works-card" data-title="Medical" data-img1="img/works/9-1.jpg" data-img2="img/works/9-2.jpg" data-img3="img/works/9-3.jpg" data-img4="img/works/9-4.jpg">
       <img class="works-card-img" src="img/works/9-1.jpg" alt="">
       <div class="works-card-overlay"></div>
       <div class="works-card-view"><span>View</span></div>
-      <div class="works-card-info"><p class="works-card-title">Medical</p></div>
+      <div class="works-card-info"><img class="works-card-title" src="img/label/medical.png" alt="Medical"></div>
     </div>
     <div class="works-card" data-title="Dental" data-img1="img/works/8-1.jpg" data-img2="img/works/8-2.jpg" data-img3="img/works/8-3.jpg" data-img4="img/works/8-4.jpg">
       <img class="works-card-img" src="img/works/8-1.jpg" alt="">
       <div class="works-card-overlay"></div>
       <div class="works-card-view"><span>View</span></div>
-      <div class="works-card-info"><p class="works-card-title">Dental</p></div>
+      <div class="works-card-info"><img class="works-card-title" src="img/label/dental.png" alt="Dental"></div>
     </div>
     <div class="works-card" data-title="Dental" data-img1="img/works/7-1.jpg" data-img2="img/works/7-2.jpg" data-img3="img/works/7-3.jpg" data-img4="img/works/7-4.jpg">
       <img class="works-card-img" src="img/works/7-1.jpg" alt="">
       <div class="works-card-overlay"></div>
       <div class="works-card-view"><span>View</span></div>
-      <div class="works-card-info"><p class="works-card-title">Dental</p></div>
+      <div class="works-card-info"><img class="works-card-title" src="img/label/dental.png" alt="Dental"></div>
     </div>
     <div class="works-card" data-title="Dental" data-img1="img/works/6-1.jpg" data-img2="img/works/6-2.jpg" data-img3="img/works/6-3.jpg" data-img4="img/works/6-4.jpg">
       <img class="works-card-img" src="img/works/6-1.jpg" alt="">
       <div class="works-card-overlay"></div>
       <div class="works-card-view"><span>View</span></div>
-      <div class="works-card-info"><p class="works-card-title">Dental</p></div>
+      <div class="works-card-info"><img class="works-card-title" src="img/label/dental.png" alt="Dental"></div>
     </div>
     <div class="works-card" data-title="Dental" data-img1="img/works/5-1.jpg" data-img2="img/works/5-2.jpg" data-img3="img/works/5-3.jpg" data-img4="img/works/5-4.jpg">
       <img class="works-card-img" src="img/works/5-1.jpg" alt="">
       <div class="works-card-overlay"></div>
       <div class="works-card-view"><span>View</span></div>
-      <div class="works-card-info"><p class="works-card-title">Dental</p></div>
+      <div class="works-card-info"><img class="works-card-title" src="img/label/dental.png" alt="Dental"></div>
     </div>
     <div class="works-card" data-title="Dental" data-img1="img/works/4-1.jpg" data-img2="img/works/4-2.jpg" data-img3="img/works/4-3.jpg" data-img4="img/works/4-4.jpg">
       <img class="works-card-img" src="img/works/4-1.jpg" alt="">
       <div class="works-card-overlay"></div>
       <div class="works-card-view"><span>View</span></div>
-      <div class="works-card-info"><p class="works-card-title">Dental</p></div>
+      <div class="works-card-info"><img class="works-card-title" src="img/label/dental.png" alt="Dental"></div>
     </div>
     <div class="works-card" data-title="Dental" data-img1="img/works/3-1.jpg" data-img2="img/works/3-2.jpg" data-img3="img/works/3-3.jpg" data-img4="img/works/3-4.jpg">
       <img class="works-card-img" src="img/works/3-1.jpg" alt="">
       <div class="works-card-overlay"></div>
       <div class="works-card-view"><span>View</span></div>
-      <div class="works-card-info"><p class="works-card-title">Dental</p></div>
+      <div class="works-card-info"><img class="works-card-title" src="img/label/dental.png" alt="Dental"></div>
     </div>
     <div class="works-card" data-title="Dental" data-img1="img/works/2-1.jpg" data-img2="img/works/2-2.jpg" data-img3="img/works/2-3.jpg" data-img4="img/works/2-4.jpg">
       <img class="works-card-img" src="img/works/2-1.jpg" alt="">
       <div class="works-card-overlay"></div>
       <div class="works-card-view"><span>View</span></div>
-      <div class="works-card-info"><p class="works-card-title">Dental</p></div>
+      <div class="works-card-info"><img class="works-card-title" src="img/label/dental.png" alt="Dental"></div>
     </div>
     <div class="works-card" data-title="Dental" data-img1="img/works/1-1.jpg" data-img2="img/works/1-2.jpg" data-img3="img/works/1-3.jpg" data-img4="img/works/1-4.jpg">
       <img class="works-card-img" src="img/works/1-1.jpg" alt="">
       <div class="works-card-overlay"></div>
       <div class="works-card-view"><span>View</span></div>
-      <div class="works-card-info"><p class="works-card-title">Dental</p></div>
+      <div class="works-card-info"><img class="works-card-title" src="img/label/dental.png" alt="Dental"></div>
     </div>
   </div>
 
@@ -671,7 +686,7 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
 <div id="works-modal">
   <div id="works-modal-inner">
     <button id="works-modal-close">×</button>
-    <p id="works-modal-title"></p>
+    <img id="works-modal-title" src="" alt="">
     <div id="works-modal-images">
       <div id="works-modal-track">
         <div id="works-modal-main">
@@ -725,13 +740,15 @@ function goToSlide(index) {
 }
 
 function openModal(card) {
-  modalTitle.textContent = card.dataset.title || '';
+  const titleMap = { Dental: 'img/dental.png', Medical: 'img/medical.png' };
+  modalTitle.src = titleMap[card.dataset.title] || '';
+  modalTitle.alt = card.dataset.title || '';
   allSrcs = [card.dataset.img1, card.dataset.img2, card.dataset.img3, card.dataset.img4];
   modalImg1.src = allSrcs[0] || '';
   goToSlide(0);
   // 画面高さに合わせてモーダルを制御
   const innerEl = document.getElementById('works-modal-inner');
-  const availH = window.innerHeight * 0.88;
+  const availH = window.innerWidth > 1024 ? window.innerHeight * 0.92 : window.innerHeight * 0.88;
   innerEl.style.maxHeight = availH + 'px';
   modal.classList.add('open');
 }
@@ -791,6 +808,71 @@ imagesContainer.addEventListener('touchend', (e) => {
     goToSlide(currentSlide < 3 ? currentSlide + 1 : 0);
   }
 });
+
+// ===== カード 行ごとフェードインアニメーション =====
+(function() {
+  const cards = Array.from(document.querySelectorAll('.works-card'));
+  if (!cards.length) return;
+
+  // カードを行ごとにグループ化（topの位置で判定）
+  function getRows() {
+    const rows = [];
+    let currentTop = -1;
+    let currentRow = [];
+    cards.forEach(card => {
+      const top = Math.round(card.getBoundingClientRect().top);
+      if (Math.abs(top - currentTop) > 10) {
+        if (currentRow.length) rows.push(currentRow);
+        currentRow = [card];
+        currentTop = top;
+      } else {
+        currentRow.push(card);
+      }
+    });
+    if (currentRow.length) rows.push(currentRow);
+    return rows;
+  }
+
+  const rows = getRows();
+  const viewportH = window.innerHeight;
+
+  // 初期ビューポート内の行と外の行を分ける
+  const inViewRows = [];
+  const outViewRows = [];
+
+  rows.forEach((row, index) => {
+    const rect = row[0].getBoundingClientRect();
+    if (rect.top < viewportH) {
+      inViewRows.push({ row, index });
+    } else {
+      outViewRows.push({ row, index });
+    }
+  });
+
+  // ビューポート内の行は時間差で順番にフェードイン
+  inViewRows.forEach(({ row }, i) => {
+    setTimeout(() => {
+      row.forEach(card => card.classList.add('is-visible'));
+    }, i * 350);
+  });
+
+  // ビューポート外の行はスクロールでフェードイン
+  if (outViewRows.length > 0) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const rowData = outViewRows.find(r => r.row.includes(entry.target));
+          if (rowData) {
+            rowData.row.forEach(card => card.classList.add('is-visible'));
+            rowData.row.forEach(c => observer.unobserve(c));
+          }
+        }
+      });
+    }, { threshold: 0.1 });
+
+    outViewRows.forEach(({ row }) => observer.observe(row[0]));
+  }
+})();
 </script>
 
 </body>

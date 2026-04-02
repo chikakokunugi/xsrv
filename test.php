@@ -7,6 +7,9 @@
 <meta name="format-detection" content="telephone=no">
 <title>神戸・大阪 歯科開業、設計・施工デザインオフィス プラスワン</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; }
 body, html {
@@ -14,7 +17,7 @@ body, html {
   padding: 0;
   background: #fff;
   width: 100%;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Noto Serif JP', serif;
   scroll-behavior: smooth;
 }
 
@@ -46,13 +49,13 @@ header {
 nav {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 20px;
 }
 
 nav a {
   text-decoration: none;
   color: #222;
-  font-size: 0.72rem;
+  font-size: 0.85rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -80,9 +83,9 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
 .nav-contact {
   background: #111;
   color: #fff !important;
-  padding: 8px 18px;
+  padding: 6px 14px;
   border-radius: 4px;
-  font-size: 0.72rem;
+  font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -126,15 +129,17 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
 .panel:nth-child(1),
 .panel:nth-child(2),
 .panel:nth-child(3),
-.panel:nth-child(4) {
-  clip-path: polygon(0 0, calc(100% - 50px) 0, 100% 50px, 100% 100%, 0 100%);
+.panel:nth-child(4),
+.panel:nth-child(5) {
+  clip-path: polygon(0 0, calc(100% - 50px) 0, 100% 20%, 100% 100%, 0 100%);
 }
 
-.panel:nth-child(1) { width: 43vw; z-index: 5; }
-.panel:nth-child(2) { width: calc((57vw + 200px) / 4); z-index: 4; }
-.panel:nth-child(3) { width: calc((57vw + 200px) / 4); z-index: 3; }
-.panel:nth-child(4) { width: calc((57vw + 200px) / 4); z-index: 2; }
-.panel:nth-child(5) { width: calc((57vw + 200px) / 4); z-index: 1; }
+.panel:nth-child(1) { width: 43vw; z-index: 6; }
+.panel:nth-child(2) { width: calc((57vw + 250px) / 5); z-index: 5; }
+.panel:nth-child(3) { width: calc((57vw + 250px) / 5); z-index: 4; }
+.panel:nth-child(4) { width: calc((57vw + 250px) / 5); z-index: 3; }
+.panel:nth-child(5) { width: calc((57vw + 250px) / 5); z-index: 2; }
+.panel:nth-child(6) { width: calc((57vw + 250px) / 5); z-index: 1; }
 
 .img-track {
   position: absolute;
@@ -191,16 +196,16 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
   .footer-company {
     font-size: 0.9rem;
   }
-  /* 4・5枚目を非表示 */
+  /* 4・5・6枚目を非表示 */
   .panel:nth-child(4),
-  .panel:nth-child(5) {
+  .panel:nth-child(5),
+  .panel:nth-child(6) {
     display: none;
   }
 
-  /* clip-pathは1・2枚目のみ */
-  .panel:nth-child(1),
+  /* clip-pathは2枚目のみ */
   .panel:nth-child(2) {
-    clip-path: polygon(0 0, calc(100% - 50px) 0, 100% 50px, 100% 100%, 0 100%);
+    clip-path: polygon(0 0, calc(100% - 50px) 0, 100% 20%, 100% 100%, 0 100%);
   }
   .panel:nth-child(3) {
     clip-path: none;
@@ -237,7 +242,7 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
 .panel-label {
   position: absolute;
   bottom: 60px;
-  max-height: 450px;
+  max-height: 300px;
   width: auto;
   z-index: 10;
   pointer-events: none;
@@ -246,13 +251,24 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
 /* ラベル位置はJSで動的に設定 */
 @media (max-width: 768px) and (min-width: 481px) {
   .panel-label {
-    max-height: 150px !important;
+    max-height: 180px !important;
   }
 }
 @media (max-width: 480px) {
   .panel-label {
-    max-height: 100px !important;
+    max-height: 120px !important;
   }
+}
+
+/* ===== FADE-IN ANIMATION ===== */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ===== PHILOSOPHY SECTION ===== */
@@ -331,6 +347,97 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
   line-height: 2.0;
   margin: 0;
 }
+/* ===== FURNITURE SECTION ===== */
+.furniture-section {
+  width: 100%;
+  padding: 80px 40px;
+  box-sizing: border-box;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+.furniture-title {
+  text-align: center;
+  margin: 0 0 48px;
+}
+
+.furniture-title img {
+  height: auto;
+  max-width: 100%;
+}
+
+.furniture-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 48px;
+}
+
+.furniture-left {
+  flex-shrink: 0;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.furniture-logo {
+  width: 100%;
+  height: auto;
+}
+
+.furniture-body {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.furniture-images {
+  display: flex;
+  gap: 12px;
+  flex: 1;
+}
+
+.furniture-img {
+  flex: 1;
+  width: 0;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .furniture-section {
+    padding: 60px 24px;
+  }
+  .furniture-inner {
+    flex-direction: column;
+    gap: 28px;
+  }
+  .furniture-left {
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+  }
+  .furniture-logo {
+    width: 160px;
+  }
+  .furniture-images {
+    width: 100%;
+  }
+  .furniture-img {
+    flex: 1;
+    width: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .furniture-title {
+    font-size: 1.6rem;
+  }
+}
+
 /* ===== NEW WORKS SECTION ===== */
 .works-section {
   width: 100%;
@@ -343,7 +450,7 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
   font-weight: 300;
   color: #aaa;
   letter-spacing: 0.05em;
-  font-family: Georgia, serif;
+  font-family: 'Noto Serif JP', serif;
   text-align: center;
   margin: 0 0 30px;
 }
@@ -368,10 +475,14 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
 .works-card {
   flex-shrink: 0;
   width: calc((100vw - 80px - 72px) / 4);
-  border-radius: 4px;
   overflow: hidden;
   position: relative;
   background: #ccc;
+  aspect-ratio: 1 / 1;
+  cursor: pointer;
+}
+.works-card.is-pressed {
+  transform: scale(0.97);
 }
 
 @media (max-width: 768px) {
@@ -385,15 +496,47 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
 
 .works-card-img {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  height: 100%;
   object-fit: cover;
   display: block;
+  transition: transform 0.4s ease;
 }
+.works-card.is-hover .works-card-img {
+  transform: scale(1.04);
+}
+
 .works-card-overlay {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.35);
+  transition: background 0.3s ease;
 }
+.works-card.is-hover .works-card-overlay {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.works-card-view {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.works-card.is-hover .works-card-view {
+  opacity: 1;
+}
+.works-card-view span {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.8);
+  padding: 8px 20px;
+  text-transform: uppercase;
+}
+
 .works-card-info {
   position: absolute;
   top: 50%;
@@ -403,11 +546,11 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
   padding: 0;
 }
 .works-card-title {
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.4;
-  margin: 0;
+  display: block;
+  height: 18px;
+  width: auto;
 }
+
 .works-more {
   text-align: right;
   padding: 20px 40px 0;
@@ -428,17 +571,150 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
   width: 100%;
   height: 1px;
   background: #111;
-  transform: scaleX(0);
+  transform: scaleX(1);
   transform-origin: left;
   transition: transform 0.3s ease;
+  animation: moreUnderline 3s ease-in-out infinite;
 }
 .works-more a:hover::after {
   transform: scaleX(1);
+  animation: none;
+}
+
+@keyframes moreUnderline {
+  0%   { transform: scaleX(1); }
+  40%  { transform: scaleX(0); transform-origin: right; }
+  60%  { transform: scaleX(0); transform-origin: left; }
+  100% { transform: scaleX(1); transform-origin: left; }
 }
 
 @media (max-width: 768px) {
   .works-more a {
     font-size: 1rem;
+  }
+}
+
+/* ===== WORKS MODAL ===== */
+#works-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+#works-modal.open { display: flex; }
+
+#works-modal-inner {
+  background: #fff;
+  padding: 40px 32px 32px;
+  max-width: 560px;
+  width: 90%;
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+#works-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+  color: #333;
+  line-height: 1;
+}
+#works-modal-title {
+  height: 28px;
+  width: auto;
+  margin: 0 0 10px;
+  flex-shrink: 0;
+  align-self: flex-start;
+}
+#works-modal-images {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+#works-modal-main {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#works-modal-main img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}
+#works-modal-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+  flex-shrink: 0;
+}
+.modal-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ccc;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.modal-dot.active { background: #333; }
+
+#works-modal-thumbs {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+  flex-shrink: 0;
+}
+#works-modal-thumbs img {
+  width: calc((100% - 12px) / 3);
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 4px;
+  opacity: 0.7;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+#works-modal-thumbs img:hover { opacity: 1; }
+
+/* タブレット以下：+アイコン表示、VIEW非表示 */
+@media (max-width: 1024px) {
+  .works-card-view { display: none; }
+  .works-card::after {
+    content: '+';
+    position: absolute;
+    bottom: 8px;
+    right: 10px;
+    color: rgba(255,255,255,0.85);
+    font-size: 1.3rem;
+    font-weight: 300;
+    line-height: 1;
+    pointer-events: none;
+  }
+}
+
+@media (min-width: 1025px) {
+  #works-modal-inner {
+    max-width: 760px;
+  }
+}
+
+@media (max-width: 480px) {
+  #works-modal-inner {
+    padding: 40px 16px 16px;
   }
 }
 
@@ -497,7 +773,7 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
 }
 
 .workflow-heading {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 700;
   color: #222;
   padding: 0 0 7px 20px;
@@ -506,7 +782,7 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
 }
 
 .workflow-body {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: #555;
   line-height: 1.9;
   padding: 12px 0 0 20px;
@@ -806,7 +1082,7 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
 
 <!-- HEADER -->
 <header>
-  <a class="header-logo" href="#"><img class="" src="logo.png" alt="プラスワンのロゴ画像"></a>
+  <a class="header-logo" href="#"><img class="" src="logo_v2.png" alt="プラスワンのロゴ画像"></a>
   <nav>
     <a href="#works">WORKS</a>
     <a href="#workflow">WORKFLOW</a>
@@ -814,7 +1090,7 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
     <div class="nav-icons">
       <!-- Instagram icon (SVG) -->
       <a href="https://www.instagram.com/designoffice_plusone/" aria-label="Instagram" target="_blank">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
       </a>
     </div>
   </nav>
@@ -827,13 +1103,14 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
   <div class="panel"><div class="img-track"></div></div>
   <div class="panel"><div class="img-track"></div></div>
   <div class="panel"><div class="img-track"></div></div>
+  <div class="panel"><div class="img-track"></div></div>
 </div>
 
 <!-- PHILOSOPHY SECTION -->
-<section class="philosophy-section">
+<section class="philosophy-section fade-in-section">
   <div class="philosophy-scroll"><span>Scroll</span></div>
   <div class="philosophy-inner">
-    <h2 class="philosophy-heading"><img class="" src="img/h2/Philosophy.png" alt="Philosophy"></h2>
+    <h2 class="philosophy-heading"><img class="" src="img/h2/Philosophy_v2.png" alt="Philosophy"></h2>
     <h3 class="philosophy-sub">プラスワンは、クリニックを<br class="br-sp">トータルプロデュースする企業です。</h3>
     <p class="philosophy-body">
 		プラスワンは医療業界で培った豊富な経験と知識と<br>
@@ -844,95 +1121,99 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
   </div>
 </section>
 
+<!-- FURNITURE SECTION -->
+<section class="furniture-section fade-in-section">
+  <div class="furniture-title"><img src="img/h2/OriginalFurnitureFactory.png" alt="Original Furniture Factory"></div>
+  <div class="furniture-inner">
+    <div class="furniture-left">
+      <img class="furniture-logo" src="img/shintec.png" alt="ShinTEC">
+      <p class="furniture-body">医院にマッチする、素材、機能性、<br>デザイン性にこだわる、自社独自の工場でオリジナル家具制作</p>
+    </div>
+    <div class="furniture-images">
+      <img class="furniture-img" src="img/original1.png" alt="オリジナル家具1">
+      <img class="furniture-img" src="img/original2.png" alt="オリジナル家具2">
+      <img class="furniture-img" src="img/original3.png" alt="オリジナル家具3">
+    </div>
+  </div>
+</section>
+
 <!-- NEW WORKS SECTION -->
-<section class="works-section" id="works">
-  <h2 class="works-title"><img class="" src="img/h2/NewWorks.png" alt="Philosophy"></h2>
+<section class="works-section fade-in-section" id="works">
+  <h2 class="works-title"><img class="" src="img/h2/NewWorks_v2.png" alt="Philosophy"></h2>
   <div class="works-slider-outer" id="worksSlider">
     <div class="works-slider-track" id="worksTrack">
       <!-- 12枚のカード（12→1の順） -->
-      <div class="works-card">
+      <div class="works-card" data-title="Dental" data-img1="img/works/12-1.jpg" data-img2="img/works/12-2.jpg" data-img3="img/works/12-3.jpg" data-img4="img/works/12-4.jpg">
         <img class="works-card-img" src="img/works/12-1.jpg" alt="">
         <div class="works-card-overlay"></div>
-        <div class="works-card-info">
-          <p class="works-card-title">Dental</p>
-        </div>
+        <div class="works-card-view"><span>VIEW</span></div>
+        <div class="works-card-info"><img class="works-card-title" src="img/label/dental.png" alt="Dental"></div>
       </div>
-      <div class="works-card">
+      <div class="works-card" data-title="Dental" data-img1="img/works/11-1.jpg" data-img2="img/works/11-2.jpg" data-img3="img/works/11-3.jpg" data-img4="img/works/11-4.jpg">
         <img class="works-card-img" src="img/works/11-1.jpg" alt="">
         <div class="works-card-overlay"></div>
-        <div class="works-card-info">
-          <p class="works-card-title">Dental</p>
-        </div>
+        <div class="works-card-view"><span>VIEW</span></div>
+        <div class="works-card-info"><img class="works-card-title" src="img/label/dental.png" alt="Dental"></div>
       </div>
-      <div class="works-card">
+      <div class="works-card" data-title="Dental" data-img1="img/works/10-1.jpg" data-img2="img/works/10-2.jpg" data-img3="img/works/10-3.jpg" data-img4="img/works/10-4.jpg">
         <img class="works-card-img" src="img/works/10-1.jpg" alt="">
         <div class="works-card-overlay"></div>
-        <div class="works-card-info">
-          <p class="works-card-title">Dental</p>
-        </div>
+        <div class="works-card-view"><span>VIEW</span></div>
+        <div class="works-card-info"><img class="works-card-title" src="img/label/dental.png" alt="Dental"></div>
       </div>
-      <div class="works-card">
+      <div class="works-card" data-title="Medical" data-img1="img/works/9-1.jpg" data-img2="img/works/9-2.jpg" data-img3="img/works/9-3.jpg" data-img4="img/works/9-4.jpg">
         <img class="works-card-img" src="img/works/9-1.jpg" alt="">
         <div class="works-card-overlay"></div>
-        <div class="works-card-info">
-          <p class="works-card-title">Medical</p>
-        </div>
+        <div class="works-card-view"><span>VIEW</span></div>
+        <div class="works-card-info"><img class="works-card-title" src="img/label/medical.png" alt="Medical"></div>
       </div>
-      <div class="works-card">
+      <div class="works-card" data-title="Dental" data-img1="img/works/8-1.jpg" data-img2="img/works/8-2.jpg" data-img3="img/works/8-3.jpg" data-img4="img/works/8-4.jpg">
         <img class="works-card-img" src="img/works/8-1.jpg" alt="">
         <div class="works-card-overlay"></div>
-        <div class="works-card-info">
-          <p class="works-card-title">Dental</p>
-        </div>
+        <div class="works-card-view"><span>VIEW</span></div>
+        <div class="works-card-info"><img class="works-card-title" src="img/label/dental.png" alt="Dental"></div>
       </div>
-      <div class="works-card">
+      <div class="works-card" data-title="Dental" data-img1="img/works/7-1.jpg" data-img2="img/works/7-2.jpg" data-img3="img/works/7-3.jpg" data-img4="img/works/7-4.jpg">
         <img class="works-card-img" src="img/works/7-1.jpg" alt="">
         <div class="works-card-overlay"></div>
-        <div class="works-card-info">
-          <p class="works-card-title">Dental</p>
-        </div>
+        <div class="works-card-view"><span>VIEW</span></div>
+        <div class="works-card-info"><img class="works-card-title" src="img/label/dental.png" alt="Dental"></div>
       </div>
-      <div class="works-card">
+      <div class="works-card" data-title="Dental" data-img1="img/works/6-1.jpg" data-img2="img/works/6-2.jpg" data-img3="img/works/6-3.jpg" data-img4="img/works/6-4.jpg">
         <img class="works-card-img" src="img/works/6-1.jpg" alt="">
         <div class="works-card-overlay"></div>
-        <div class="works-card-info">
-          <p class="works-card-title">Dental</p>
-        </div>
+        <div class="works-card-view"><span>VIEW</span></div>
+        <div class="works-card-info"><img class="works-card-title" src="img/label/dental.png" alt="Dental"></div>
       </div>
-      <div class="works-card">
+      <div class="works-card" data-title="Dental" data-img1="img/works/5-1.jpg" data-img2="img/works/5-2.jpg" data-img3="img/works/5-3.jpg" data-img4="img/works/5-4.jpg">
         <img class="works-card-img" src="img/works/5-1.jpg" alt="">
         <div class="works-card-overlay"></div>
-        <div class="works-card-info">
-          <p class="works-card-title">Dental</p>
-        </div>
+        <div class="works-card-view"><span>VIEW</span></div>
+        <div class="works-card-info"><img class="works-card-title" src="img/label/dental.png" alt="Dental"></div>
       </div>
-      <div class="works-card">
+      <div class="works-card" data-title="Dental" data-img1="img/works/4-1.jpg" data-img2="img/works/4-2.jpg" data-img3="img/works/4-3.jpg" data-img4="img/works/4-4.jpg">
         <img class="works-card-img" src="img/works/4-1.jpg" alt="">
         <div class="works-card-overlay"></div>
-        <div class="works-card-info">
-          <p class="works-card-title">Dental</p>
-        </div>
+        <div class="works-card-view"><span>VIEW</span></div>
+        <div class="works-card-info"><img class="works-card-title" src="img/label/dental.png" alt="Dental"></div>
       </div>
-      <div class="works-card">
+      <div class="works-card" data-title="Dental" data-img1="img/works/3-1.jpg" data-img2="img/works/3-2.jpg" data-img3="img/works/3-3.jpg" data-img4="img/works/3-4.jpg">
         <img class="works-card-img" src="img/works/3-1.jpg" alt="">
         <div class="works-card-overlay"></div>
-        <div class="works-card-info">
-          <p class="works-card-title">Dental</p>
-        </div>
+        <div class="works-card-view"><span>VIEW</span></div>
+        <div class="works-card-info"><img class="works-card-title" src="img/label/dental.png" alt="Dental"></div>
       </div>
-      <div class="works-card">
+      <div class="works-card" data-title="Dental" data-img1="img/works/2-1.jpg" data-img2="img/works/2-2.jpg" data-img3="img/works/2-3.jpg" data-img4="img/works/2-4.jpg">
         <img class="works-card-img" src="img/works/2-1.jpg" alt="">
         <div class="works-card-overlay"></div>
-        <div class="works-card-info">
-          <p class="works-card-title">Dental</p>
-        </div>
+        <div class="works-card-view"><span>VIEW</span></div>
+        <div class="works-card-info"><img class="works-card-title" src="img/label/dental.png" alt="Dental"></div>
       </div>
-      <div class="works-card">
+      <div class="works-card" data-title="Dental" data-img1="img/works/1-1.jpg" data-img2="img/works/1-2.jpg" data-img3="img/works/1-3.jpg" data-img4="img/works/1-4.jpg">
         <img class="works-card-img" src="img/works/1-1.jpg" alt="">
         <div class="works-card-overlay"></div>
-        <div class="works-card-info">
-          <p class="works-card-title">Dental</p>
-        </div>
+        <div class="works-card-view"><span>VIEW</span></div>
+        <div class="works-card-info"><img class="works-card-title" src="img/label/dental.png" alt="Dental"></div>
       </div>
     </div>
   </div>
@@ -940,9 +1221,9 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
 </section>
 
 <!-- WORKFLOW SECTION -->
-<section class="workflow-section" id="workflow">
+<section class="workflow-section fade-in-section" id="workflow">
   <div class="workflow-inner">
-    <h2 class="workflow-title"><img class="" src="img/h2/Workflow.png" alt="Philosophy"></h2>
+    <h2 class="workflow-title"><img class="" src="img/h2/Workflow_v2.png" alt="Philosophy"></h2>
 <table class="workflow-item">
   <tr>
     <td class="workflow-num"><img src="img/num-01.png" alt="01"></td>
@@ -983,18 +1264,7 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
       <tr>
         <td></td>
         <td class="workflow-body">
-          打ち合わせを経て工事の内容が固まってきたら、見積もりを行います。多種多様な建材から弊社独自の「オリジナル家具」で。最適、適正な金額を算出した上で、お客様に提示します。
-			<div class="workflow-box">
-			  <div class="workflow-box-left">
-				<img class="workflow-box-logo" src="img/shintec.png" alt="ShinTEC">
-				<p class="workflow-box-label">自社独自の工場で<br>オリジナル家具制作</p>
-			  </div>
-			  <div class="workflow-box-images">
-				<img class="workflow-box-img" src="img/original1.png" alt="オリジナル家具1">
-				<img class="workflow-box-img" src="img/original2.png" alt="オリジナル家具2">
-				<img class="workflow-box-img" src="img/original3.png" alt="オリジナル家具3">
-			  </div>
-			</div>
+          打ち合わせを経て工事の内容が固まってきたら、見積もりを行います。多種多様な建材から最適、適正な金額を算出した上で、お客様に提示します。
         </td>
       </tr>
     </table>
@@ -1062,20 +1332,43 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
     <p>Copyright© <?php echo date('Y'); ?>   Design Office Plus One Co., Ltd.. All Rights Reserved.</p>
   </div>
 </footer>
-	
+
+<!-- WORKS MODAL -->
+<div id="works-modal">
+  <div id="works-modal-inner">
+    <button id="works-modal-close">×</button>
+    <img id="works-modal-title" src="" alt="">
+    <div id="works-modal-images">
+      <div id="works-modal-track">
+        <div id="works-modal-main">
+          <img id="works-modal-img1" src="" alt="">
+        </div>
+      </div>
+    </div>
+    <div id="works-modal-dots">
+      <span class="modal-dot active" data-index="0"></span>
+      <span class="modal-dot" data-index="1"></span>
+      <span class="modal-dot" data-index="2"></span>
+      <span class="modal-dot" data-index="3"></span>
+    </div>
+    <div id="works-modal-thumbs"></div>
+  </div>
+</div>
+
 <script>
 const IMAGE_QUEUE = [
-  '1.jpeg',
-  '2.jpeg',
-  '3.png',
-  '4.png',
-  '5.jpeg',
+  'kobe.webp',
+  'himeji.webp',
+  'osaka.webp',
+  'kyoto.webp',
+  'nara.webp',
+  'okayama.webp',
 ];
 const DURATION = 1.2;
 const INTERVAL = 2500;
 const EASE = 'power4.inOut';
 
-const CITY_LABELS = ['img/kobe.png', 'img/himeji.png', 'img/osaka.png', 'img/kyoto.png', 'img/nara.png'];
+const CITY_LABELS = ['img/kobe_v2.png', 'img/himeji_v2.png', 'img/osaka_v2.png', 'img/kyoto_v2.png', 'img/nara_v2.png', 'img/okayama_v2.png'];
 
 const panels = Array.from(document.querySelectorAll('.panel'));
 
@@ -1088,25 +1381,16 @@ const state = panels.map((panel, i) => ({
 
 // ラベル画像の寸法キャッシュ
 const labelDims = {};
-const MAX_LABEL_H = window.innerWidth <= 480 ? 100 : window.innerWidth <= 768 ? 150 : 250;
-
-function getLabelRight(imgIndex) {
-  const src = CITY_LABELS[imgIndex];
-  const dim = labelDims[src];
-  if (!dim) return '20px';
-  const scale = Math.min(1, MAX_LABEL_H / dim.h);
-  const renderedW = dim.w * scale;
-  const narrowPanelW = state[1].panel.offsetWidth;
-  const overlap = 50; // margin-left: -50px による重なり
-  return Math.max(5, (narrowPanelW - renderedW) / 2 - overlap / 2) + 'px';
-}
+const MAX_LABEL_H = window.innerWidth <= 480 ? 120 : window.innerWidth <= 768 ? 180 : window.innerWidth <= 1150 ? 200 : 250;
 
 function createLabel(imgIndex, panelIndex) {
   const label = document.createElement('img');
   label.className = 'panel-label';
   label.src = CITY_LABELS[imgIndex];
   label.alt = '';
-  label.style.right = getLabelRight(imgIndex);
+  label.style.height = MAX_LABEL_H + 'px';
+  label.style.width = 'auto';
+  label.style.right = '16px';
   label.style.left = 'auto';
   return label;
 }
@@ -1121,11 +1405,40 @@ function initPanel(s) {
   slide.className = 'img-slide';
   slide.style.width = panelW + 'px';
   slide.style.backgroundImage = `url('${IMAGE_QUEUE[s.queueIndex]}')`;
-  slide.appendChild(createLabel(s.queueIndex, s.index));
   track.appendChild(slide);
 }
 
 let isAnimating = false;
+
+// モバイル・タブレット用ラベルセット切り替え
+let mobileSlideCount = 0;
+let mobileLabelSet = 0;
+const MOBILE_LABEL_SETS = [
+  [0, 1, 2], // 神戸, 姫路, 大阪
+  [3, 4, 1], // 京都, 奈良, 姫路
+];
+
+function updateMobileLabels() {
+  if (window.innerWidth > 768) return;
+  mobileLabelSet = (mobileLabelSet + 1) % MOBILE_LABEL_SETS.length;
+  const set = MOBILE_LABEL_SETS[mobileLabelSet];
+  for (let i = 0; i < 3; i++) {
+    const label = state[i].panel.querySelector('.panel-label');
+    if (!label) continue;
+    const newSrc = CITY_LABELS[set[i]];
+    // 左へスライドアウト
+    label.style.transition = 'transform 0.35s ease';
+    label.style.transform = 'translateX(-140%)';
+    setTimeout(() => {
+      label.src = newSrc;
+      label.style.transition = 'none';
+      label.style.transform = 'translateX(140%)';
+      label.offsetWidth; // reflow
+      label.style.transition = 'transform 0.35s ease';
+      label.style.transform = 'translateX(0)';
+    }, 350);
+  }
+}
 
 function moveNext() {
   if (isAnimating) return;
@@ -1136,6 +1449,8 @@ function moveNext() {
         s.queueIndex = (s.queueIndex + 1) % IMAGE_QUEUE.length;
         initPanel(s);
       });
+      mobileSlideCount++;
+      if (mobileSlideCount % 3 === 0) updateMobileLabels();
       isAnimating = false;
     }
   });
@@ -1147,7 +1462,6 @@ function moveNext() {
     nextSlide.style.width = panelW + 'px';
     const nextIndex = (s.queueIndex + 1) % IMAGE_QUEUE.length;
     nextSlide.style.backgroundImage = `url('${IMAGE_QUEUE[nextIndex]}')`;
-    nextSlide.appendChild(createLabel(nextIndex, s.index));
     track.appendChild(nextSlide);
     track.style.width = (panelW * 2) + 'px';
     tl.to(track, {
@@ -1166,6 +1480,10 @@ CITY_LABELS.forEach(src => {
     labelDims[src] = { w: img.naturalWidth || 60, h: img.naturalHeight || 200 };
     if (++_loadedCount === CITY_LABELS.length) {
       state.forEach(initPanel);
+      state.forEach(s => {
+        const label = createLabel(s.index, s.index);
+        s.panel.appendChild(label);
+      });
       setInterval(moveNext, INTERVAL);
     }
   };
@@ -1173,6 +1491,7 @@ CITY_LABELS.forEach(src => {
   img.onerror = done;
   img.src = src;
 });
+
 
 // ===== WORKS SLIDER =====
 (function() {
@@ -1272,6 +1591,104 @@ CITY_LABELS.forEach(src => {
     track.style.transform = 'translateX(0px)';
   });
 })();
+
+// ===== WORKS MODAL =====
+const modal = document.getElementById('works-modal');
+const modalTitle = document.getElementById('works-modal-title');
+const modalImg1 = document.getElementById('works-modal-img1');
+const closeBtn = document.getElementById('works-modal-close');
+const dots = document.querySelectorAll('.modal-dot');
+const thumbsContainer = document.getElementById('works-modal-thumbs');
+
+let currentSlide = 0;
+let touchStartX = 0;
+let touchEndX = 0;
+let allSrcs = [];
+
+function updateThumbs() {
+  thumbsContainer.innerHTML = '';
+  allSrcs.forEach((src, i) => {
+    if (i === currentSlide) return;
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = '';
+    img.addEventListener('click', (e) => {
+      e.stopPropagation();
+      goToSlide(i);
+    });
+    thumbsContainer.appendChild(img);
+  });
+}
+
+function goToSlide(index) {
+  currentSlide = index;
+  modalImg1.src = allSrcs[index];
+  dots.forEach((d, i) => d.classList.toggle('active', i === index));
+  updateThumbs();
+}
+
+function openModal(card) {
+  const titleMap = { Dental: 'img/dental.png', Medical: 'img/medical.png' };
+  modalTitle.src = titleMap[card.dataset.title] || '';
+  modalTitle.alt = card.dataset.title || '';
+  allSrcs = [card.dataset.img1, card.dataset.img2, card.dataset.img3, card.dataset.img4];
+  modalImg1.src = allSrcs[0] || '';
+  goToSlide(0);
+  const innerEl = document.getElementById('works-modal-inner');
+  const availH = window.innerWidth > 1024 ? window.innerHeight * 0.92 : window.innerHeight * 0.88;
+  innerEl.style.maxHeight = availH + 'px';
+  modal.classList.add('open');
+}
+
+function closeModal() {
+  modal.classList.remove('open');
+}
+
+// オリジナルカードのみ（スライダー複製を除く）
+document.getElementById('worksTrack').querySelectorAll(':scope > .works-card').forEach(card => {
+  card.addEventListener('click', () => openModal(card));
+  card.addEventListener('mouseenter', () => card.classList.add('is-hover'));
+  card.addEventListener('mouseleave', () => card.classList.remove('is-hover'));
+  card.addEventListener('touchstart', () => card.classList.add('is-pressed'), { passive: true });
+  card.addEventListener('touchend', () => { setTimeout(() => card.classList.remove('is-pressed'), 150); }, { passive: true });
+  card.addEventListener('touchcancel', () => card.classList.remove('is-pressed'), { passive: true });
+});
+
+closeBtn.addEventListener('click', closeModal);
+modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+dots.forEach(dot => {
+  dot.addEventListener('click', () => goToSlide(parseInt(dot.dataset.index)));
+});
+
+const imagesContainer = document.getElementById('works-modal-images');
+imagesContainer.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].clientX; });
+imagesContainer.addEventListener('touchend', (e) => {
+  touchEndX = e.changedTouches[0].clientX;
+  const diff = touchStartX - touchEndX;
+  if (diff > 30) {
+    goToSlide(currentSlide < 3 ? currentSlide + 1 : 0);
+  } else if (diff < -30) {
+    goToSlide(currentSlide > 0 ? currentSlide - 1 : 3);
+  } else {
+    goToSlide(currentSlide < 3 ? currentSlide + 1 : 0);
+  }
+});
+
+// ===== セクション フェードインアニメーション =====
+const fadeObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-visible');
+      fadeObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.fade-in-section').forEach(section => {
+  fadeObserver.observe(section);
+});
 </script>
 </body>
 </html>

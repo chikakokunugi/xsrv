@@ -395,7 +395,7 @@ nav a:not(.nav-contact):not([aria-label]):hover { color: #000; }
 <section class="privacy-section">
   <div class="privacy-inner">
 
-    <h1 class="privacy-heading"><img src="img/h2/privacy.png" alt="Privacy"></h1>
+    <h1 class="privacy-heading"><img src="img/h2/privacy_v2.png" alt="Privacy"></h1>
 
     <p class="privacy-lead">有限会社デザインオフィスプラスワン（以下「当社」）は、個人情報保護について規定の制定及び管理体制の確立を図ると共に、以下に掲げる個人情報保護法を定めこの方針に従い個人情報の適切な保護に努めて参ります。</p>
 
